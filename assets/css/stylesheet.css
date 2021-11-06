@@ -6,3 +6,12 @@ section {
 #five-day-forecast {
     flex-direction: row;
 }
+
+#header {
+    text-align: center;
+    font-size: 2em;
+}
+
+#main {
+    max-width: 100%;
+}

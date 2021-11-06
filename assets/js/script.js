@@ -42,7 +42,14 @@ var saveHistory = function(city){
 var getCurrentWeather = function(city) {
     
          //clear input
-         cityInput.value= '';
+        cityInput.value= '';
+        //get current date
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+
+        today = mm + '/' + dd + '/' + yyyy;
         
     
     //get mapquest api call for city name
@@ -97,7 +104,7 @@ var getCurrentWeather = function(city) {
                                 //add title class
                                 currentWeatherCardTitle.classList.add('card-title');
                                 //set title = city name
-                                currentWeatherCardTitle.textContent = city;
+                                currentWeatherCardTitle.textContent = city + ' : ' + today;
                                 //create text card
                                 var currentWeatherCardText = document.createElement('div');
                                 //add card text class
@@ -150,10 +157,15 @@ var getCurrentWeather = function(city) {
                                 fiveDayForecast.innerHTML = '';
                             //create 5 elements for daily forecase
                             for (var i=0; i<5; i++) {
+                                //increment dd to get date of 5 day forecast
+                                parseInt(dd);
+                                dd++;
+                                //reset today value
+                                today = mm + '/' + dd + '/' + yyyy;
                                 //create card container
                                 var dailyWeatherCard = document.createElement('div');
                                 //add card container class
-                                dailyWeatherCard.classList.add('card');
+                                dailyWeatherCard.classList.add('card', 'col-md', 'col-sm-12');
                                  //create card img
                                  var dailyWeatherCardImg = document.createElement('img');
                                  //add card img class
@@ -169,7 +181,7 @@ var getCurrentWeather = function(city) {
                                 //add title class
                                 dailyWeatherCardTitle.classList.add('card-title');
                                 //set title = city name
-                                dailyWeatherCardTitle.textContent = city;
+                                dailyWeatherCardTitle.textContent = city + ' : ' + today;
                                 //create text card
                                 var dailyWeatherCardText = document.createElement('div');
                                 //add card text class
@@ -246,6 +258,7 @@ var historyBtn = function() {
     for (var i=0; i<cityHistory.length; i++) {
     //create button
      var recentSearch = document.createElement('button');
+    recentSearch.classList.add('btn-secondary');
      //set button text to name of input value
      recentSearch.textContent = cityHistory[i];
      recentSearch.addEventListener('click', inputBtnValue);
@@ -258,13 +271,19 @@ var historyBtn = function() {
 var getCityInput = function(event) {
     //stop page from refreshing
     event.preventDefault();
-    //get city input value
-    var city = cityInput.value;
-    //run getCurrentWeather function for city
-    getCurrentWeather(city);
-    saveHistory(city);
-    //call historyBtn
-    historyBtn();
+
+    if (cityInput && cityInput.value) {
+        //get city input value
+        var city = cityInput.value;
+        //run getCurrentWeather function for city
+        getCurrentWeather(city);
+        saveHistory(city);
+        //call historyBtn
+        historyBtn();
+    } else {
+        alert('Please Enter a City Name');
+    }
+    
 }
 
 
