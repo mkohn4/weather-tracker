@@ -53,7 +53,7 @@ var getCurrentWeather = function(city) {
         
     
     //get mapquest api call for city name
-    var mapquestAPI = 'http://www.mapquestapi.com/geocoding/v1/address?key=p3kcpZvR6puTovHsK3MATQbQcfRAszGA&location='+city;
+    var mapquestAPI = 'https://www.mapquestapi.com/geocoding/v1/address?key=p3kcpZvR6puTovHsK3MATQbQcfRAszGA&location='+city;
 
     //fetch latitude and longitude from geocoding mapquest api
     fetch(mapquestAPI).then(function(response) {
