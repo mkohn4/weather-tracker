@@ -2,3 +2,7 @@ div,
 section {
     border: 2px #000 solid;
 }
+
+#five-day-forcast {
+    flex-direction: row;
+}
