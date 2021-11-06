@@ -86,8 +86,6 @@ var getCurrentWeather = function(city) {
                                 currentWeatherCard.classList.add('card');
                                 //create card img
                                 var currentWeatherCardImg = document.createElement('img');
-                                //add card img class
-                                currentWeatherCardImg.classList.add('card-image-top');
                                 //set current weather card img to icon
                                 currentWeatherCardImg.setAttribute("src", "http://openweathermap.org/img/wn/"+data.current.weather[0].icon+".png")
                                 //create card body
@@ -120,10 +118,20 @@ var getCurrentWeather = function(city) {
                                 //create list item for uvi
                                 var currentWeatherCardUVI = document.createElement('li');
                                 currentWeatherCardUVI.textContent = 'Current UVI = '+data.current.uvi;
+
+                                //add class based on UVI
+                                if (data.current.uvi < 3) {
+                                    currentWeatherCardUVI.classList.add('text-success');
+                                } else if (data.current.uvi < 6) {
+                                    currentWeatherCardUVI.classList.add('text-warning');
+                                } else {
+                                    currentWeatherCardUVI.classList.add('text-danger');
+                                };
+
+                                //add image to card
+                                currentWeatherCardBody.append(currentWeatherCardImg);
                                 //add card body to card
                                 currentWeatherCard.append(currentWeatherCardBody);
-                                //add image to card
-                                currentWeatherCard.append(currentWeatherCardImg);
                                 //add card title to card body
                                 currentWeatherCardBody.append(currentWeatherCardTitle);
                                 //add card text to body
@@ -182,9 +190,19 @@ var getCurrentWeather = function(city) {
                                 //create list item for uvi
                                 var dailyWeatherCardUVI = document.createElement('li');
                                 dailyWeatherCardUVI.textContent = 'Current UVI = '+data.daily[i].uvi;
+
+                                //add class based on UVI
+                                if (data.daily[i].uvi < 3) {
+                                    dailyWeatherCardUVI.classList.add('text-success');
+                                } else if (data.current.uvi < 6) {
+                                    dailyWeatherCardUVI.classList.add('text-warning');
+                                } else {
+                                    dailyWeatherCardUVI.classList.add('text-danger');
+                                };
+
                                 //add card body to card
+                                dailyWeatherCardBody.append(dailyWeatherCardImg);
                                 dailyWeatherCard.append(dailyWeatherCardBody);
-                                dailyWeatherCard.append(dailyWeatherCardImg);
                                 //add card title to card body
                                 dailyWeatherCardBody.append(dailyWeatherCardTitle);
                                 //add card text to body
