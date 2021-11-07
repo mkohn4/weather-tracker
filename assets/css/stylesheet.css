@@ -28,6 +28,10 @@
     min-height: 70px;
 }
 
+#dark-mode {
+    float: right;
+}
+
 @media (max-width: 992px) {
     #current-temp {
         margin-bottom:5%;

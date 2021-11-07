@@ -22,6 +22,7 @@ var currentWeather = document.getElementById('today-temp');
 var fiveDayForecast = document.getElementById('five-day-forecast');
 var cityHistory = JSON.parse(localStorage.getItem('cityHistory')) || [];
 var btnContainer = document.getElementById('button-container');
+var darkMode = document.getElementById('dark-mode');
 var lat;
 var lng;
 
@@ -286,8 +287,23 @@ var getCityInput = function(event) {
     
 }
 
+var darkModeOn = function() {
+    document.body.style.backgroundColor = '#36454F';
+    document.body.style.color = '#FFF';
+    document.getElementsByClassName("card")[0].style.backgroundColor = '#36454F';
+    document.getElementsByClassName("card")[0].style.borderColor = '#FFF';
+    if (document.getElementsByClassName("card").length > 3) {
+        for (var i=1; i < document.getElementsByClassName("card").length; i++) {
+            document.getElementsByClassName("card")[i].style.backgroundColor = '#36454F';
+            document.getElementsByClassName("card")[i].style.borderColor = '#FFF';
+        }
+    }
+}
+
 
 //on click of Get Weather button, run get city input function
 searchWeather.addEventListener("click", getCityInput)
 //call historyBtn
 historyBtn();
+
+darkMode.addEventListener("click", darkModeOn);
