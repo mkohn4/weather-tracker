@@ -32,6 +32,15 @@
     float: right;
 }
 
+#five-day-forecast .card-body,
+#today-temp .card-body {
+    border: 2px solid;
+}
+
+#five-day-forecast {
+    margin-left: -4px;
+}
+
 @media (max-width: 992px) {
     #current-temp {
         margin-bottom:5%;

@@ -35,7 +35,7 @@ var darkModeOn = function() {
     if (document.getElementsByClassName("card").length > 3) {
         for (var i=1; i < document.getElementsByClassName("card").length; i++) {
             document.getElementsByClassName("card")[i].style.backgroundColor = '#36454F';
-            document.getElementsByClassName("card")[i].style.borderColor = '#FFF';
+            document.getElementsByClassName("card-body")[i].style.borderColor = '#FFF';
         }
     }
 darkModeEnabled = 1;
