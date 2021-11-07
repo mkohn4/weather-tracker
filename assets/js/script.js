@@ -23,8 +23,23 @@ var fiveDayForecast = document.getElementById('five-day-forecast');
 var cityHistory = JSON.parse(localStorage.getItem('cityHistory')) || [];
 var btnContainer = document.getElementById('button-container');
 var darkMode = document.getElementById('dark-mode');
+var darkModeEnabled;
 var lat;
 var lng;
+
+var darkModeOn = function() {
+    document.body.style.backgroundColor = '#36454F';
+    document.body.style.color = '#FFF';
+    document.getElementsByClassName("card")[0].style.backgroundColor = '#36454F';
+    document.getElementsByClassName("card")[0].style.borderColor = '#FFF';
+    if (document.getElementsByClassName("card").length > 3) {
+        for (var i=1; i < document.getElementsByClassName("card").length; i++) {
+            document.getElementsByClassName("card")[i].style.backgroundColor = '#36454F';
+            document.getElementsByClassName("card")[i].style.borderColor = '#FFF';
+        }
+    }
+darkModeEnabled = 1;
+}
 
 var saveHistory = function(city){
     //check to see if city exists in array currently, if not, add to array
@@ -230,7 +245,13 @@ var getCurrentWeather = function(city) {
                                 //append daily card to daily card container
                                 fiveDayForecast.append(dailyWeatherCard);
                             }
-                            
+                           
+                            if (darkModeEnabled === 1) {
+                                for (var i=1; i < document.getElementsByClassName("card").length; i++) {
+                                    document.getElementsByClassName("card")[i].style.backgroundColor = '#36454F';
+                                    document.getElementsByClassName("card")[i].style.borderColor = '#FFF';
+                                }
+                            }
 
                                 
                             })
@@ -287,18 +308,7 @@ var getCityInput = function(event) {
     
 }
 
-var darkModeOn = function() {
-    document.body.style.backgroundColor = '#36454F';
-    document.body.style.color = '#FFF';
-    document.getElementsByClassName("card")[0].style.backgroundColor = '#36454F';
-    document.getElementsByClassName("card")[0].style.borderColor = '#FFF';
-    if (document.getElementsByClassName("card").length > 3) {
-        for (var i=1; i < document.getElementsByClassName("card").length; i++) {
-            document.getElementsByClassName("card")[i].style.backgroundColor = '#36454F';
-            document.getElementsByClassName("card")[i].style.borderColor = '#FFF';
-        }
-    }
-}
+
 
 
 //on click of Get Weather button, run get city input function
