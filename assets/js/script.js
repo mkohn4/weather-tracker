@@ -191,17 +191,17 @@ var getCurrentWeather = function(city) {
                                 //create temp li
                                 var dailyWeatherCardTemp = document.createElement('li');
                                 //assign temp li text
-                                dailyWeatherCardTemp.textContent = 'Current Temperature (f) = '+data.daily[i].temp.day;
+                                dailyWeatherCardTemp.textContent = 'Anticipated Temperature (f) = '+data.daily[i].temp.day;
                                 //create humidity element
                                 var dailyWeatherHumidity = document.createElement('li');
                                 //add content to humidity
-                                dailyWeatherHumidity.textContent = 'Current Humidity = '+data.daily[i].humidity;
+                                dailyWeatherHumidity.textContent = 'Anticipated Humidity = '+data.daily[i].humidity;
                                 //create list item for current weather wind
                                 var dailyWeatherCardWind = document.createElement('li');
-                                dailyWeatherCardWind.textContent = 'Current Wind Speed (mph) = '+data.daily[i].wind_speed;
+                                dailyWeatherCardWind.textContent = 'Anticipated Wind Speed (mph) = '+data.daily[i].wind_speed;
                                 //create list item for uvi
                                 var dailyWeatherCardUVI = document.createElement('li');
-                                dailyWeatherCardUVI.textContent = 'Current UVI = '+data.daily[i].uvi;
+                                dailyWeatherCardUVI.textContent = 'Anticipated UVI = '+data.daily[i].uvi;
 
                                 //add class based on UVI
                                 if (data.daily[i].uvi < 3) {

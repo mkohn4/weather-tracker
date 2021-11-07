@@ -1,7 +1,4 @@
-div,
-section {
-    border: 2px #000 solid;
-}
+
 
 #five-day-forecast {
     flex-direction: row;
@@ -14,4 +11,19 @@ section {
 
 #main {
     max-width: 100%;
+}
+
+.btn-secondary {
+    margin: 3px 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+
+#city {
+    margin-bottom: 12px;
+}
+
+#button-container {
+    min-height: 70px;
 }
